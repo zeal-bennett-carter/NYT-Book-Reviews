@@ -12,12 +12,17 @@ code {
     monospace;
 }
 
+#root{
+  font-family: monospace;
+}
+
 .outer-content-holder{
-  background: #d8e2eb;
+  background: #272e49;
+  color: white;
   display: block;
   position: absolute;
-  margin: 0 15%;
-  width: 70%;
+  margin: 0 10%;
+  width: 80%;
   height: 100%;
   box-shadow: 0 0 35px 4px grey;
 }
@@ -26,3 +31,46 @@ code {
   margin: 30px auto;
   text-align: center;
 }
+
+.books-table{
+  margin: 0 10px;
+  border-spacing: 0;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+
+.books-table .column-header{
+  /* border: 1px solid grey;
+  border-bottom: transparent;
+  background-color: rgb(228, 236, 245); */
+}
+
+.books-table-title{
+  height: 35px;
+  border-bottom: transparent;
+  background-color: rgb(44 89 140);
+  font-size: 15px;
+}
+
+.book-table-row{
+  height: 40px;
+}
+
+.book-table-cell{
+  padding: 0 10px;
+  border-top: 1px solid grey;
+}
+
+.column-header{
+  padding: 0 15px;
+}
+
+.book-title{
+  color: #8888ff;
+  font-weight: bold;
+}
+
+.book-price{
+  /* width: 10%; */
+}
+
