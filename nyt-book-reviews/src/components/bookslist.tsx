@@ -10,12 +10,6 @@ export default function BooksList() {
                 console.log("CALLING BOOK RETRIEVER")
                 const retrievedBooks = await retrieveBooksList();
                 setBooksList(retrievedBooks);
-
-                // Log each book object
-                booksList.forEach((book, index) => {
-                console.log(`Book ${index + 1}:`, book);
-            });
-
             } catch (error) {
                 console.error("Error in fetching books:", error);
             }
