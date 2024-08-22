@@ -1,6 +1,6 @@
 import {useState} from 'react'
 import Header from './components/header';
-import BooksRetriever from './components/booksretriever';
+import BooksList from './components/bookslist';
 
 function App() {
 
@@ -11,7 +11,7 @@ function App() {
     
     <div className="outer-content-holder">
       <Header pageName={pageName}/>
-      <BooksRetriever/>
+      <BooksList/>
     </div>
 
   );
