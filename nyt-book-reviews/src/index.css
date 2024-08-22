@@ -12,7 +12,6 @@ code {
     monospace;
 }
 
-
 .outer-content-holder{
   background: #d8e2eb;
   display: block;
@@ -21,4 +20,9 @@ code {
   width: 70%;
   height: 100%;
   box-shadow: 0 0 35px 4px grey;
+}
+
+.main-header-wrapper .main-header{
+  margin: 30px auto;
+  text-align: center;
 }

@@ -7,8 +7,8 @@ interface HeaderProps {
 const Header : React.FC<HeaderProps> = ({pageName}) => {
 
     return (
-        <div className="header-wrapper">
-            <h1>
+        <div className="main-header-wrapper">
+            <h1 className="main-header">
                 {pageName}
             </h1>
         </div>
