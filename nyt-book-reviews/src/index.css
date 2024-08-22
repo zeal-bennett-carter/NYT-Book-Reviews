@@ -16,6 +16,18 @@ code {
   font-family: monospace;
 }
 
+a:link{
+  color: #8888ff;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:visited{
+  color: #b4b4de;
+  font-weight: bold;
+  text-decoration: none;
+}
+
 .outer-content-holder{
   background: #272e49;
   color: white;
@@ -33,7 +45,8 @@ code {
 }
 
 .books-table{
-  margin: 0 10px;
+  position: relative;
+  margin: 0 auto;
   border-spacing: 0;
   border-collapse: collapse;
   font-size: 12px;
@@ -69,6 +82,8 @@ code {
   color: #8888ff;
   font-weight: bold;
 }
+
+
 
 .book-price{
   /* width: 10%; */
