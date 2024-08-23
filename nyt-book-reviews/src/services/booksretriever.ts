@@ -3,6 +3,7 @@ import axios from "axios";
 export interface BookListing {
     title: string,
     author: string,
+    description: string,
     publisher: string,
     price: number
 }

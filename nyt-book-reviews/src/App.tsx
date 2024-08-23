@@ -26,10 +26,7 @@ function App() {
   return (
     
     <div className="outer-content-holder">
-      {/* <div className="inner-content-holder"> */}
-        {/* <Header pageName={pageName}/> */}
         <RouterProvider router={router} />
-      {/* </div> */}
     </div>
 
   );

@@ -13,6 +13,10 @@ export default function BooksList() {
             .join(' ');
     };
 
+    const filterHashtags = (title: string) => {
+        return title.replace(/#(?=\S)/g, '')
+    };
+
     useEffect(() => {
         const getBooksList = async () => {
 
@@ -51,6 +55,7 @@ export default function BooksList() {
                     NYT Best Sellers
                 </h1>
             </div>
+            <p>Click a book title below to see a description and reviews!</p>
             <table className="books-table">
                 <thead className="books-table-title">
                     <tr>
@@ -64,7 +69,15 @@ export default function BooksList() {
                     {
                         booksList.map((book, index) => (
                             <tr className="book-table-row" key={index}>
-                                <td className="book-table-cell book-title"><Link to={`/reviews/${book.title}`}>{book.title}</Link></td>
+                                <td className="book-table-cell book-title">
+                                    <Link 
+                                        to={`/reviews/${filterHashtags(book.title)}`}
+                                        state={{ 
+                                            description: book.description, 
+                                            author: book.author 
+                                        }}
+                                    >{filterHashtags(book.title)}</Link>
+                                    </td>
                                 <td className="book-table-cell">{capitalizeWords(book.author)}</td>
                                 <td className="book-table-cell">{book.publisher}</td>
                                 <td className="book-table-cell book-price">${book.price}</td>
