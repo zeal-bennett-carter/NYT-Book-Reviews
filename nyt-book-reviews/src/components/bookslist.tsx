@@ -15,12 +15,29 @@ export default function BooksList() {
 
     useEffect(() => {
         const getBooksList = async () => {
-            try {
-                console.log("CALLING BOOK RETRIEVER")
-                const retrievedBooks = await getBookList();
-                setBooksList(retrievedBooks);
-            } catch (error) {
-                console.error("Error in fetching books:", error);
+
+            const cachedBooks = localStorage.getItem('bookslist');
+            console.log("cached books:", cachedBooks);
+
+            if (cachedBooks) {
+                // If cached books exist, use them
+                setBooksList(JSON.parse(cachedBooks));
+                console.log("filling book list with cached books");
+            } else {
+                try {
+                    console.log("CALLING BOOK RETRIEVER");
+                    const retrievedBooks = await getBookList();
+                    setBooksList(retrievedBooks);
+                    
+                    // Store the retrieved books in localStorage
+                    console.log("caching books");
+                    localStorage.setItem('bookslist', JSON.stringify(retrievedBooks));
+                    
+                    // Optionally verify the cached data
+                    // console.log("Cached books after storing:", localStorage.getItem('bookslist'));
+                } catch (error) {
+                    console.error("Error in fetching books:", error);
+                }
             }
         } 
 
