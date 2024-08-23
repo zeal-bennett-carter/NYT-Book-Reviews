@@ -45,27 +45,34 @@ export default function BooksList() {
     }, [])
 
     return (
-        <table className="books-table">
-            <thead className="books-table-title">
-                <tr>
-                    <th className="column-header">Title</th>
-                    <th className="column-header">Author</th>
-                    <th className="column-header">Publisher</th>
-                    <th className="column-header">Price</th>
-                </tr>
-            </thead>
-            <tbody>
-                {
-                    booksList.map((book, index) => (
-                        <tr className="book-table-row" key={index}>
-                            <td className="book-table-cell book-title"><Link to={`/reviews/${book.title}`}>{book.title}</Link></td>
-                            <td className="book-table-cell">{capitalizeWords(book.author)}</td>
-                            <td className="book-table-cell">{book.publisher}</td>
-                            <td className="book-table-cell book-price">${book.price}</td>
-                        </tr>
-                    ))
-                }
-            </tbody>
-        </table>
+        <div className="inner-content-holder">
+            <div className="main-header-wrapper">
+                <h1 className="main-header">
+                    NYT Best Sellers
+                </h1>
+            </div>
+            <table className="books-table">
+                <thead className="books-table-title">
+                    <tr>
+                        <th className="column-header">Title</th>
+                        <th className="column-header">Author</th>
+                        <th className="column-header">Publisher</th>
+                        <th className="column-header">Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {
+                        booksList.map((book, index) => (
+                            <tr className="book-table-row" key={index}>
+                                <td className="book-table-cell book-title"><Link to={`/reviews/${book.title}`}>{book.title}</Link></td>
+                                <td className="book-table-cell">{capitalizeWords(book.author)}</td>
+                                <td className="book-table-cell">{book.publisher}</td>
+                                <td className="book-table-cell book-price">${book.price}</td>
+                            </tr>
+                        ))
+                    }
+                </tbody>
+            </table>
+        </div>
     )
 }
