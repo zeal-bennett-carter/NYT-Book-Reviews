@@ -8,7 +8,7 @@ export default function BookReviews() {
     const [retrievalSuccess, setRetrievalSuccess] = useState<boolean>(true);
     const params = useParams();
     let location = useLocation();
-    const bookDescription = location.state?.description;
+    const bookDescription = location.state?.description || "No Description";
     const bookAuthor = location.state?.author;
     console.log(params);
 
