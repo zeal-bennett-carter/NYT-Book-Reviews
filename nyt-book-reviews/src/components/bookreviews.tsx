@@ -31,59 +31,61 @@ export default function BookReviews() {
     
     
     return(
-        <div className="reviews-wrapper">
-            
-
-            {loading ? (
-                <h2>Loading...</h2>
-            ) :
-            retrievalSuccess && bookReviews.length != 0 ? (
-                <div>
-                    <h2 className="reviews-header">
-                        Reviews:
-                    </h2>
-                    <table className="books-table">
-                    <thead className="books-table-title">
-                        <tr>
-                            <th className="column-header">Index</th>
-                            <th className="column-header">Review Author</th>
-                            <th className="column-header">Link</th>
-                            <th className="column-header">Publication Date</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            bookReviews.map((bookReview, index) => (
-                                <tr className="book-table-row" key={index}>
-                                    <td className="book-table-cell">{index + 1}</td>
-                                    <td className="book-table-cell">{bookReview.byline}</td>
-                                    <td className="book-table-cell"><a href={bookReview.url} target="_blank">{bookReview.url}</a></td>
-                                    <td className="book-table-cell">{bookReview.publication_dt}</td>
-                                </tr>
-                            ))
-                        }
-                    </tbody>
-                    </table>
-                    <Link className="return-button" to="/">Return Home</Link>
-                </div>
-            ): 
-            retrievalSuccess && bookReviews.length == 0 ? 
-            (
-                <div>
-                    <h2>No Reviews Found</h2>
-                    <Link className="return-button" to="/">Return Home</Link>
-                </div>
-            ):
-            (
-                <div>
-                    <h2>NYT API Rate Limit Reached, Please Return Home</h2>
-                    <Link className="return-button" to="/">Return Home</Link>
-                </div>
-            ) 
-            }
-            
-
-            
+        <div className="inner-content-holder">
+             <div className="main-header-wrapper">
+                <h1 className="main-header">
+                        {params.bookTitle}
+                </h1>
+            </div>
+            <div className="reviews-wrapper">
+                {loading ? (
+                    <h2>Loading...</h2>
+                ) :
+                retrievalSuccess && bookReviews.length != 0 ? (
+                    <div>
+                        <h2 className="reviews-header">
+                            Reviews:
+                        </h2>
+                        <table className="books-table">
+                        <thead className="books-table-title">
+                            <tr>
+                                <th className="column-header">Index</th>
+                                <th className="column-header">Review Author</th>
+                                <th className="column-header">Link</th>
+                                <th className="column-header">Publication Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                bookReviews.map((bookReview, index) => (
+                                    <tr className="book-table-row" key={index}>
+                                        <td className="book-table-cell">{index + 1}</td>
+                                        <td className="book-table-cell">{bookReview.byline}</td>
+                                        <td className="book-table-cell"><a href={bookReview.url} target="_blank">{bookReview.url}</a></td>
+                                        <td className="book-table-cell">{bookReview.publication_dt}</td>
+                                    </tr>
+                                ))
+                            }
+                        </tbody>
+                        </table>
+                        <Link className="return-button" to="/">Return Home</Link>
+                    </div>
+                ): 
+                retrievalSuccess && bookReviews.length == 0 ? 
+                (
+                    <div>
+                        <h2>No Reviews Found</h2>
+                        <Link className="return-button" to="/">Return Home</Link>
+                    </div>
+                ):
+                (
+                    <div>
+                        <h2>NYT API Rate Limit Reached, Please Return Home</h2>
+                        <Link className="return-button" to="/">Return Home</Link>
+                    </div>
+                ) 
+                }
+            </div>
         </div>
     )
 };

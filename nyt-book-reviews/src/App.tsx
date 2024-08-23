@@ -1,6 +1,5 @@
 import {useState} from 'react'
 import {createBrowserRouter, RouterProvider} from 'react-router-dom'
-import Header from './components/header';
 import BooksList from './components/bookslist';
 import InvalidURL from './components/invalidUrl';
 import BookReviews from './components/bookreviews';
@@ -20,17 +19,17 @@ function App() {
     }
   ]);
 
-  let [pageName,setPageName] = useState<string>('Starter Header')
+  let [pageName,setPageName] = useState<string>('NYT Bestsellers')
 
   console.log("App component rendered");
 
   return (
     
     <div className="outer-content-holder">
-      <div className="inner-content-holder">
-        <Header pageName={pageName}/>
+      {/* <div className="inner-content-holder"> */}
+        {/* <Header pageName={pageName}/> */}
         <RouterProvider router={router} />
-      </div>
+      {/* </div> */}
     </div>
 
   );
