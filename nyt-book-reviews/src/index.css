@@ -16,6 +16,18 @@ code {
   font-family: monospace;
 }
 
+a:link{
+  color: #b4b4de;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:visited{
+  color: #4662ff;
+  font-weight: bold;
+  text-decoration: none;
+}
+
 .outer-content-holder{
   background: #272e49;
   color: white;
@@ -27,13 +39,26 @@ code {
   box-shadow: 0 0 35px 4px grey;
 }
 
+.inner-content-holder{
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  max-width: fit-content;
+  align-items: flex-start;
+}
+
+.main-header-wrapper{
+  width: 100%;
+}
+
 .main-header-wrapper .main-header{
   margin: 30px auto;
   text-align: center;
 }
 
 .books-table{
-  margin: 0 10px;
+  position: relative;
+  margin: 0 auto;
   border-spacing: 0;
   border-collapse: collapse;
   font-size: 12px;
@@ -70,7 +95,14 @@ code {
   font-weight: bold;
 }
 
-.book-price{
-  /* width: 10%; */
+.return-button{
+  display: inline-block;
+  margin-top: 15px;
+  color: #ffffff !important;
+  background-color: #3033ff;
+  border-radius: 26px;
+  padding: 10px;
 }
+
+
 
