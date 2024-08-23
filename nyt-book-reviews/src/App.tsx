@@ -27,8 +27,10 @@ function App() {
   return (
     
     <div className="outer-content-holder">
-      <Header pageName={pageName}/>
-      <RouterProvider router={router} />
+      <div className="inner-content-holder">
+        <Header pageName={pageName}/>
+        <RouterProvider router={router} />
+      </div>
     </div>
 
   );

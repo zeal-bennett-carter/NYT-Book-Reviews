@@ -39,6 +39,18 @@ a:visited{
   box-shadow: 0 0 35px 4px grey;
 }
 
+.inner-content-holder{
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  max-width: fit-content;
+  align-items: flex-start;
+}
+
+.main-header-wrapper{
+  width: 100%;
+}
+
 .main-header-wrapper .main-header{
   margin: 30px auto;
   text-align: center;
@@ -83,9 +95,14 @@ a:visited{
   font-weight: bold;
 }
 
-
-
-.book-price{
-  /* width: 10%; */
+.return-button{
+  display: inline-block;
+  margin-top: 15px;
+  color: #ffffff !important;
+  background-color: #3033ff;
+  border-radius: 26px;
+  padding: 10px;
 }
+
+
 

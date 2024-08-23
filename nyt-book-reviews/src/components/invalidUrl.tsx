@@ -9,7 +9,7 @@ export default function InvalidURL() {
             This is an invalid url
             </h2>
             <div>
-                <Link to="/">Return Home</Link>
+                <Link className="return-button" to="/">Return Home</Link>
             </div>
         </div>
 
