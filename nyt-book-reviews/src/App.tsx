@@ -14,14 +14,13 @@ function App() {
       errorElement: <InvalidURL/>
     },
     {
-      path: 'details',
+      path: 'details/:bookTitle',
       element: <BookDetails/>,
       errorElement: <InvalidURL/>
     }
   ]);
 
   let [pageName,setPageName] = useState<string>('Starter Header')
-
 
   return (
     

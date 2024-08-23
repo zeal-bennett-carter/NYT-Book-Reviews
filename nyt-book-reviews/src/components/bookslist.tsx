@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import { BookListing, retrieveBooksList } from "../services/bookslistretriever";
+import { BookListing, getBookList } from "../services/booksretriever";
 import { Link } from "react-router-dom";
 
 export default function BooksList() {
@@ -17,7 +17,7 @@ export default function BooksList() {
         const getBooksList = async () => {
             try {
                 console.log("CALLING BOOK RETRIEVER")
-                const retrievedBooks = await retrieveBooksList();
+                const retrievedBooks = await getBookList();
                 setBooksList(retrievedBooks);
             } catch (error) {
                 console.error("Error in fetching books:", error);
@@ -41,7 +41,7 @@ export default function BooksList() {
                 {
                     booksList.map((book, index) => (
                         <tr className="book-table-row" key={index}>
-                            <td className="book-table-cell book-title"><Link to="/details">{book.title}</Link></td>
+                            <td className="book-table-cell book-title"><Link to={`/details/${book.title}`}>{book.title}</Link></td>
                             <td className="book-table-cell">{capitalizeWords(book.author)}</td>
                             <td className="book-table-cell">{book.publisher}</td>
                             <td className="book-table-cell book-price">${book.price}</td>
