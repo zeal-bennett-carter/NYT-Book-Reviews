@@ -2,8 +2,8 @@ import {useState} from 'react'
 import {createBrowserRouter, RouterProvider} from 'react-router-dom'
 import Header from './components/header';
 import BooksList from './components/bookslist';
-import BookDetails from './components/bookdetails';
 import InvalidURL from './components/invalidUrl';
+import BookReviews from './components/bookreviews';
 
 function App() {
 
@@ -14,8 +14,8 @@ function App() {
       errorElement: <InvalidURL/>
     },
     {
-      path: 'details/:bookTitle',
-      element: <BookDetails/>,
+      path: 'reviews/:bookTitle',
+      element: <BookReviews/>,
       errorElement: <InvalidURL/>
     }
   ]);

@@ -17,13 +17,13 @@ code {
 }
 
 a:link{
-  color: #4662ff;
+  color: #b4b4de;
   font-weight: bold;
   text-decoration: none;
 }
 
 a:visited{
-  color: #b4b4de;
+  color: #4662ff;
   font-weight: bold;
   text-decoration: none;
 }

@@ -58,7 +58,7 @@ export default function BooksList() {
                 {
                     booksList.map((book, index) => (
                         <tr className="book-table-row" key={index}>
-                            <td className="book-table-cell book-title"><Link to={`/details/${book.title}`}>{book.title}</Link></td>
+                            <td className="book-table-cell book-title"><Link to={`/reviews/${book.title}`}>{book.title}</Link></td>
                             <td className="book-table-cell">{capitalizeWords(book.author)}</td>
                             <td className="book-table-cell">{book.publisher}</td>
                             <td className="book-table-cell book-price">${book.price}</td>
