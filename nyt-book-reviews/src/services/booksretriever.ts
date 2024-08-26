@@ -45,8 +45,8 @@ export const getBookReviewByTitle = async (bookTitle:string, retryCount = 0): Pr
     const NYT_API_KEY = process.env.REACT_APP_NYT_API_KEY;
     const url = `https://api.nytimes.com/svc/books/v3/reviews.json?title=${encodeURIComponent(bookTitle)}&api-key=${NYT_API_KEY}`;
     console.log("url: " +url)
-    const maxRetries = 3; // Maximum number of retries
-    const retryDelay = 1000; // Initial delay in milliseconds
+    const maxRetries = 2; // Maximum number of retries
+    const retryDelay = 10000; // Initial delay in milliseconds
     
     try {
         console.log("RETRIEVING BOOK REVIEWS")
