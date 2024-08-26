@@ -19,17 +19,10 @@ function App() {
     }
   ]);
 
-  let [pageName,setPageName] = useState<string>('NYT Bestsellers')
-
-  console.log("App component rendered");
-
   return (
     
     <div className="outer-content-holder">
-      {/* <div className="inner-content-holder"> */}
-        {/* <Header pageName={pageName}/> */}
         <RouterProvider router={router} />
-      {/* </div> */}
     </div>
 
   );

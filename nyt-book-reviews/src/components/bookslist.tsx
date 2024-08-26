@@ -5,42 +5,30 @@ import { Link } from "react-router-dom";
 export default function BooksList() {
     const [booksList, setBooksList] = useState<BookListing[]>([]);
 
-    const capitalizeWords = (str: string): string => {
-        return str
-            .toLowerCase()
-            .split(' ')
-            .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-            .join(' ');
-    };
+    const getBooksList = async () => {
+
+        const cachedBooks = localStorage.getItem('bookslist');
+        console.log("cached books:", cachedBooks);
+
+        if (cachedBooks) {
+            setBooksList(JSON.parse(cachedBooks));
+            console.log("filling book list with cached books");
+        } else {
+            try {
+                console.log("CALLING BOOK RETRIEVER");
+                const retrievedBooks = await getBookList();
+                setBooksList(retrievedBooks);
+                
+                console.log("caching books");
+                localStorage.setItem('bookslist', JSON.stringify(retrievedBooks));
+                
+            } catch (error) {
+                console.error("Error in fetching books:", error);
+            }
+        }
+    } 
 
     useEffect(() => {
-        const getBooksList = async () => {
-
-            const cachedBooks = localStorage.getItem('bookslist');
-            console.log("cached books:", cachedBooks);
-
-            if (cachedBooks) {
-                // If cached books exist, use them
-                setBooksList(JSON.parse(cachedBooks));
-                console.log("filling book list with cached books");
-            } else {
-                try {
-                    console.log("CALLING BOOK RETRIEVER");
-                    const retrievedBooks = await getBookList();
-                    setBooksList(retrievedBooks);
-                    
-                    // Store the retrieved books in localStorage
-                    console.log("caching books");
-                    localStorage.setItem('bookslist', JSON.stringify(retrievedBooks));
-                    
-                    // Optionally verify the cached data
-                    // console.log("Cached books after storing:", localStorage.getItem('bookslist'));
-                } catch (error) {
-                    console.error("Error in fetching books:", error);
-                }
-            }
-        } 
-
         getBooksList();
     }, [])
 
@@ -51,6 +39,7 @@ export default function BooksList() {
                     NYT Best Sellers
                 </h1>
             </div>
+            <p>Click a book title below to see a description and reviews!</p>
             <table className="books-table">
                 <thead className="books-table-title">
                     <tr>
@@ -64,7 +53,16 @@ export default function BooksList() {
                     {
                         booksList.map((book, index) => (
                             <tr className="book-table-row" key={index}>
-                                <td className="book-table-cell book-title"><Link to={`/reviews/${book.title}`}>{book.title}</Link></td>
+                                <td className="book-table-cell book-title">
+                                    <Link 
+                                        to={`/reviews/${filterHashtags(book.title)}`}
+                                        state={{ 
+                                            title: book.title,
+                                            description: book.description, 
+                                            author: book.author 
+                                        }}
+                                    >{book.title}</Link>
+                                    </td>
                                 <td className="book-table-cell">{capitalizeWords(book.author)}</td>
                                 <td className="book-table-cell">{book.publisher}</td>
                                 <td className="book-table-cell book-price">${book.price}</td>
@@ -76,3 +74,15 @@ export default function BooksList() {
         </div>
     )
 }
+
+export const capitalizeWords = (str: string): string => {
+    return str
+        .toLowerCase()
+        .split(' ')
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(' ');
+};
+
+export const filterHashtags = (title: string) => {
+    return title.replace(/#(?=\S)/g, '')
+};

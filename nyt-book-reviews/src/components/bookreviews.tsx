@@ -1,12 +1,16 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useLocation } from "react-router-dom";
 import { BookReview, getBookReviewByTitle } from "../services/booksretriever";
 
 export default function BookReviews() {
     const [bookReviews, setBookReviews] = useState<BookReview[]>([]);
-    const params = useParams();
     const [loading, setLoading] = useState<boolean>(true);
     const [retrievalSuccess, setRetrievalSuccess] = useState<boolean>(true);
+    const params = useParams();
+    let location = useLocation();
+    const bookTitle = location.state?.title;
+    const bookDescription = location.state?.description || "No Description";
+    const bookAuthor = location.state?.author;
     console.log(params);
 
     const getBookReviews = async (retryCount = 0) => {
@@ -18,7 +22,7 @@ export default function BookReviews() {
             setLoading(false);
             console.log("loading value:" + loading)
         } catch (error) {
-            console.error("Failed to Book Reviews");
+            console.error("Failed to Get Book Reviews");
             setLoading(false);
             setRetrievalSuccess(false);
         }
@@ -27,16 +31,20 @@ export default function BookReviews() {
     useEffect(() => {
         getBookReviews();
     }, [])
-
-    
     
     return(
         <div className="inner-content-holder">
              <div className="main-header-wrapper">
                 <h1 className="main-header">
-                        {params.bookTitle}
+                        {bookTitle}
                 </h1>
             </div>
+            <h4>
+                Author(s): {bookAuthor}
+            </h4>
+            <h4>
+                Description: {bookDescription}
+            </h4>
             <div className="reviews-wrapper">
                 {loading ? (
                     <h2>Loading...</h2>
