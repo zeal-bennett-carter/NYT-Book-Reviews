@@ -22,7 +22,7 @@ export default function BookReviews() {
             setLoading(false);
             console.log("loading value:" + loading)
         } catch (error) {
-            console.error("Failed to Book Reviews");
+            console.error("Failed to Get Book Reviews");
             setLoading(false);
             setRetrievalSuccess(false);
         }

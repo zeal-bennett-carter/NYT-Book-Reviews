@@ -14,7 +14,7 @@ test('BooksList component renders correctly with intended values', async () => {
     await act(async () => {
         render(
             <BrowserRouter>
-                <BooksList />
+                <BooksList/>
             </BrowserRouter>
         );
     });

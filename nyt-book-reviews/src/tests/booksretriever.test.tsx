@@ -10,7 +10,7 @@ describe('booksretriever', () => {
     });
 
     afterEach(() => {
-        mockAxios.reset();
+        mockAxios.reset(); 
     });
 
     describe('getBookList', () => {
