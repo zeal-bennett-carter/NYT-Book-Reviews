@@ -17,34 +17,34 @@ export default function BooksList() {
         return title.replace(/#(?=\S)/g, '')
     };
 
-    useEffect(() => {
-        const getBooksList = async () => {
+    const getBooksList = async () => {
 
-            const cachedBooks = localStorage.getItem('bookslist');
-            console.log("cached books:", cachedBooks);
+        const cachedBooks = localStorage.getItem('bookslist');
+        console.log("cached books:", cachedBooks);
 
-            if (cachedBooks) {
-                // If cached books exist, use them
-                setBooksList(JSON.parse(cachedBooks));
-                console.log("filling book list with cached books");
-            } else {
-                try {
-                    console.log("CALLING BOOK RETRIEVER");
-                    const retrievedBooks = await getBookList();
-                    setBooksList(retrievedBooks);
-                    
-                    // Store the retrieved books in localStorage
-                    console.log("caching books");
-                    localStorage.setItem('bookslist', JSON.stringify(retrievedBooks));
-                    
-                    // Optionally verify the cached data
-                    // console.log("Cached books after storing:", localStorage.getItem('bookslist'));
-                } catch (error) {
-                    console.error("Error in fetching books:", error);
-                }
+        if (cachedBooks) {
+            // If cached books exist, use them
+            setBooksList(JSON.parse(cachedBooks));
+            console.log("filling book list with cached books");
+        } else {
+            try {
+                console.log("CALLING BOOK RETRIEVER");
+                const retrievedBooks = await getBookList();
+                setBooksList(retrievedBooks);
+                
+                // Store the retrieved books in localStorage
+                console.log("caching books");
+                localStorage.setItem('bookslist', JSON.stringify(retrievedBooks));
+                
+                // Optionally verify the cached data
+                // console.log("Cached books after storing:", localStorage.getItem('bookslist'));
+            } catch (error) {
+                console.error("Error in fetching books:", error);
             }
-        } 
+        }
+    } 
 
+    useEffect(() => {
         getBooksList();
     }, [])
 
@@ -73,10 +73,11 @@ export default function BooksList() {
                                     <Link 
                                         to={`/reviews/${filterHashtags(book.title)}`}
                                         state={{ 
+                                            title: book.title,
                                             description: book.description, 
                                             author: book.author 
                                         }}
-                                    >{filterHashtags(book.title)}</Link>
+                                    >{book.title}</Link>
                                     </td>
                                 <td className="book-table-cell">{capitalizeWords(book.author)}</td>
                                 <td className="book-table-cell">{book.publisher}</td>

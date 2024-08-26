@@ -8,6 +8,7 @@ export default function BookReviews() {
     const [retrievalSuccess, setRetrievalSuccess] = useState<boolean>(true);
     const params = useParams();
     let location = useLocation();
+    const bookTitle = location.state?.title;
     const bookDescription = location.state?.description || "No Description";
     const bookAuthor = location.state?.author;
     console.log(params);
@@ -37,7 +38,7 @@ export default function BookReviews() {
         <div className="inner-content-holder">
              <div className="main-header-wrapper">
                 <h1 className="main-header">
-                        {params.bookTitle}
+                        {bookTitle}
                 </h1>
             </div>
             <h4>

@@ -56,7 +56,7 @@ export const getBookReviewByTitle = async (bookTitle:string, retryCount = 0): Pr
         console.log(bookReviews)
 
         // Log each book object
-        bookReviews.forEach((Review:any, index:number) => {
+        bookReviews.forEach((index:number) => {
             console.log(`Book Review ${index + 1}:`, bookReviews);
         });
         
