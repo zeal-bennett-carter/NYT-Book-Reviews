@@ -1,6 +1,6 @@
 import React, { act } from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
-import BooksList from '../components/bookslist';
+import BooksList, { capitalizeWords, filterHashtags } from '../components/bookslist';
 import { getBookList } from '../services/booksretriever';
 import { BrowserRouter } from 'react-router-dom';
 
@@ -25,4 +25,16 @@ test('Bookslist component renders correctly', async () => {
       expect(screen.getByText('Publisher 1')).toBeInTheDocument();
       expect(screen.getByText('$10')).toBeInTheDocument();
     });
+});
+
+test('capitalizeWords function', () => {
+    expect(capitalizeWords('hello world')).toBe('Hello World');
+    expect(capitalizeWords('HELLO WORLD')).toBe('Hello World');
+    expect(capitalizeWords('')).toBe('');
+});
+
+test('filterHashtags function', () => {
+    expect(filterHashtags('hello #world')).toBe('hello world');
+    expect(filterHashtags('#hello #world')).toBe('hello world');
+    expect(filterHashtags('hello world')).toBe('hello world');
 });

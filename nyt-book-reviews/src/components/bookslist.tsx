@@ -5,24 +5,12 @@ import { Link } from "react-router-dom";
 export default function BooksList() {
     const [booksList, setBooksList] = useState<BookListing[]>([]);
 
-    const capitalizeWords = (str: string): string => {
-        return str
-            .toLowerCase()
-            .split(' ')
-            .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-            .join(' ');
-    };
-
-    const filterHashtags = (title: string) => {
-        return title.replace(/#(?=\S)/g, '')
-    };
-
     const getBooksList = async () => {
+
         const cachedBooks = localStorage.getItem('bookslist');
         console.log("cached books:", cachedBooks);
 
         if (cachedBooks) {
-            // If cached books exist, use them
             setBooksList(JSON.parse(cachedBooks));
             console.log("filling book list with cached books");
         } else {
@@ -31,12 +19,9 @@ export default function BooksList() {
                 const retrievedBooks = await getBookList();
                 setBooksList(retrievedBooks);
                 
-                // Store the retrieved books in localStorage
                 console.log("caching books");
                 localStorage.setItem('bookslist', JSON.stringify(retrievedBooks));
                 
-                // Optionally verify the cached data
-                // console.log("Cached books after storing:", localStorage.getItem('bookslist'));
             } catch (error) {
                 console.error("Error in fetching books:", error);
             }
@@ -89,3 +74,15 @@ export default function BooksList() {
         </div>
     )
 }
+
+export const capitalizeWords = (str: string): string => {
+    return str
+        .toLowerCase()
+        .split(' ')
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(' ');
+};
+
+export const filterHashtags = (title: string) => {
+    return title.replace(/#(?=\S)/g, '')
+};
