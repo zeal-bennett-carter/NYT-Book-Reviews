@@ -31,8 +31,6 @@ export default function BookReviews() {
     useEffect(() => {
         getBookReviews();
     }, [])
-
-    
     
     return(
         <div className="inner-content-holder">

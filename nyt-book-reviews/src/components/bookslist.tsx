@@ -18,7 +18,6 @@ export default function BooksList() {
     };
 
     const getBooksList = async () => {
-
         const cachedBooks = localStorage.getItem('bookslist');
         console.log("cached books:", cachedBooks);
 
