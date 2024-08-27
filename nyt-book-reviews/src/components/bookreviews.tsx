@@ -39,13 +39,13 @@ export default function BookReviews() {
                         {bookTitle}
                 </h1>
             </div>
-            <h4>
-                Author(s): {bookAuthor}
-            </h4>
-            <h4>
-                Description: {bookDescription}
-            </h4>
             <div className="reviews-wrapper">
+                <h4>
+                    Author(s): {bookAuthor}
+                </h4>
+                <h4>
+                    Description: {bookDescription}
+                </h4>
                 {loading ? (
                     <h2>Loading...</h2>
                 ) :
