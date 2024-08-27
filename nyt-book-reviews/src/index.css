@@ -14,6 +14,7 @@ code {
 
 #root{
   font-family: monospace;
+  height: 100%;
 }
 
 a:link{
@@ -65,11 +66,6 @@ a:visited{
   font-size: 12px;
 }
 
-.books-table .column-header{
-  /* border: 1px solid grey;
-  border-bottom: transparent;
-  background-color: rgb(228, 236, 245); */
-}
 
 .books-table-title{
   height: 35px;
@@ -105,5 +101,51 @@ a:visited{
   padding: 10px;
 }
 
+@media screen and (max-width:1000px){
+  html, body {
+    background-color: #272e49;
+  }
+
+  .outer-content-holder{
+    width: 100%;
+    margin: 0;
+    height: auto;
+    box-shadow: none;
+  }
+
+
+  .book-table-cell{
+    width: 25%;
+    overflow-wrap: anywhere;
+  }
+
+  .book-publisher{
+    display:none
+  }
+
+  .book-price{
+    text-align:center
+  }
+
+  .page-description{
+    margin: 3% 3%;
+  }
+
+  h4 , h2{
+    margin: 3% 3%;
+  }
+
+  .no-results-view, .return-button{
+    margin: 10% 3%;
+  }
+
+  .review-index{
+    display: none;
+  }
+
+  .publication-date{
+    text-align: center;
+  }
+}
 
 

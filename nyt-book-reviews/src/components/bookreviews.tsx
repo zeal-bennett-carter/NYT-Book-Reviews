@@ -57,20 +57,20 @@ export default function BookReviews() {
                         <table className="books-table">
                         <thead className="books-table-title">
                             <tr>
-                                <th className="column-header">Index</th>
+                                <th className="column-header review-index">Index</th>
                                 <th className="column-header">Review Author</th>
                                 <th className="column-header">Link</th>
-                                <th className="column-header">Publication Date</th>
+                                <th className="column-header publication-date">Publication Date</th>
                             </tr>
                         </thead>
                         <tbody>
                             {
                                 bookReviews.map((bookReview, index) => (
                                     <tr className="book-table-row" key={index}>
-                                        <td className="book-table-cell">{index + 1}</td>
+                                        <td className="book-table-cell review-index">{index + 1}</td>
                                         <td className="book-table-cell">{bookReview.byline}</td>
                                         <td className="book-table-cell"><a href={bookReview.url} target="_blank">{bookReview.url}</a></td>
-                                        <td className="book-table-cell">{bookReview.publication_dt}</td>
+                                        <td className="book-table-cell publication-date">{bookReview.publication_dt}</td>
                                     </tr>
                                 ))
                             }
@@ -81,13 +81,13 @@ export default function BookReviews() {
                 ): 
                 retrievalSuccess && bookReviews.length == 0 ? 
                 (
-                    <div>
+                    <div className="no-results-view">
                         <h2>No Reviews Found</h2>
                         <Link className="return-button" to="/">Return Home</Link>
                     </div>
                 ):
                 (
-                    <div>
+                    <div className="no-results-view">
                         <h2>NYT API Rate Limit Reached, Please Return Home</h2>
                         <Link className="return-button" to="/">Return Home</Link>
                     </div>
