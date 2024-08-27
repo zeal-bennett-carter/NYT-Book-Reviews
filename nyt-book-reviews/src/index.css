@@ -58,6 +58,10 @@ a:visited{
   text-align: center;
 }
 
+.books-table-wrapper{
+  margin: 0 auto;
+}
+
 .books-table{
   position: relative;
   margin: 0 auto;
@@ -65,7 +69,6 @@ a:visited{
   border-collapse: collapse;
   font-size: 12px;
 }
-
 
 .books-table-title{
   height: 35px;
@@ -99,6 +102,10 @@ a:visited{
   background-color: #3033ff;
   border-radius: 26px;
   padding: 10px;
+}
+
+.reviews-wrapper{
+  margin: 0 auto;
 }
 
 @media screen and (max-width:1000px){

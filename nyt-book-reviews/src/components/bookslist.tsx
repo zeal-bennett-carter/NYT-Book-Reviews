@@ -39,38 +39,40 @@ export default function BooksList() {
                     NYT Best Sellers
                 </h1>
             </div>
-            <p className="page-description">Click a book title below to see a description and reviews!</p>
-            <table className="books-table">
-                <thead className="books-table-title">
-                    <tr>
-                        <th className="column-header">Title</th>
-                        <th className="column-header">Author</th>
-                        <th className="column-header book-publisher">Publisher</th>
-                        <th className="column-header">Price</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {
-                        booksList.map((book, index) => (
-                            <tr className="book-table-row" key={index}>
-                                <td className="book-table-cell book-title">
-                                    <Link 
-                                        to={`/reviews/${filterHashtags(book.title)}`}
-                                        state={{ 
-                                            title: book.title,
-                                            description: book.description, 
-                                            author: book.author 
-                                        }}
-                                    >{book.title}</Link>
-                                    </td>
-                                <td className="book-table-cell">{capitalizeWords(book.author)}</td>
-                                <td className="book-table-cell book-publisher">{book.publisher}</td>
-                                <td className="book-table-cell book-price">${book.price}</td>
-                            </tr>
-                        ))
-                    }
-                </tbody>
-            </table>
+            <div className="books-table-wrapper">
+                <p className="page-description">Click a book title below to see a description and reviews!</p>
+                <table className="books-table">
+                    <thead className="books-table-title">
+                        <tr>
+                            <th className="column-header">Title</th>
+                            <th className="column-header">Author</th>
+                            <th className="column-header book-publisher">Publisher</th>
+                            <th className="column-header">Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            booksList.map((book, index) => (
+                                <tr className="book-table-row" key={index}>
+                                    <td className="book-table-cell book-title">
+                                        <Link 
+                                            to={`/reviews/${filterHashtags(book.title)}`}
+                                            state={{ 
+                                                title: book.title,
+                                                description: book.description, 
+                                                author: book.author 
+                                            }}
+                                        >{book.title}</Link>
+                                        </td>
+                                    <td className="book-table-cell">{capitalizeWords(book.author)}</td>
+                                    <td className="book-table-cell book-publisher">{book.publisher}</td>
+                                    <td className="book-table-cell book-price">${book.price}</td>
+                                </tr>
+                            ))
+                        }
+                    </tbody>
+                </table>
+            </div>
         </div>
     )
 }
